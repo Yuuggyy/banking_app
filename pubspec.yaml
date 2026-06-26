@@ -1,0 +1,36 @@
+name: banking_app
+description: A Real Flutter Banking App with Firebase
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Firebase
+  firebase_core: ^3.0.0
+  firebase_auth: ^5.0.0
+  cloud_firestore: ^5.0.0
+  # UI
+  google_fonts: ^6.2.1
+  iconsax: ^0.0.8
+  # QR Code
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^5.0.0
+  # Utils
+  intl: ^0.19.0
+  shared_preferences: ^2.2.3
+  local_auth: ^2.1.8
+  uuid: ^4.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
