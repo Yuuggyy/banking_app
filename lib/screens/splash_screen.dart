@@ -37,7 +37,14 @@ class _SplashScreenState extends State<SplashScreen>
   void _navigate() async {
     await Future.delayed(const Duration(seconds: 3));
     if (!mounted) return;
-    final user = FirebaseAuth.instance.currentUser;
+
+    User? user;
+    try {
+      user = FirebaseAuth.instance.currentUser;
+    } catch (_) {
+      user = null;
+    }
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -83,8 +90,11 @@ class _SplashScreenState extends State<SplashScreen>
                       ),
                     ],
                   ),
-                  child: const Icon(Icons.account_balance_wallet_rounded,
-                      color: Colors.white, size: 52),
+                  child: const Icon(
+                    Icons.account_balance_wallet_rounded,
+                    color: Colors.white,
+                    size: 52,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 const Text(
@@ -104,6 +114,11 @@ class _SplashScreenState extends State<SplashScreen>
                     color: AppTheme.textSecondary,
                     letterSpacing: 1,
                   ),
+                ),
+                const SizedBox(height: 48),
+                const CircularProgressIndicator(
+                  color: AppTheme.primary,
+                  strokeWidth: 2,
                 ),
               ],
             ),
