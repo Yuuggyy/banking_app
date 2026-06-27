@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:banking_app/firebase_options.dart';
 import 'package:banking_app/utils/app_theme.dart';
 import 'package:banking_app/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Firebase sera configuré via firebase_options.dart
-  // En attendant, on catch l'erreur pour éviter l'écran blanc
-  try {
-    await Firebase.initializeApp();
-  } catch (e) {
-    // Firebase non encore configuré — l'app tourne en mode demo
-    debugPrint('Firebase not configured: $e');
-  }
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light,
